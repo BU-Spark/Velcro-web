@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="container" style="width: 750px">
+    <div class="jumbotron">
+        <h2>{{title}}</h2>
+        <form>
+            <!--first name-->
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="firstName" class="form-control" placeholder="First Name">
+            </div>
+            <!--last name-->
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name">
+            </div>
+            <!--email-->
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" name="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <!--password-->
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+            <!--confirm password-->
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirmPassword" class="form-control" id="inputConfirmPassword" placeholder="Password">
+            </div>
+        </form>
+        <button id="register-button" class="btn btn-primary">Register</button>
+    </div>
+</div>
+</body>
+</html>

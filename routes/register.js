@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bcrypt = require('bcrypt');
+var mysql = require('mysql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,11 +18,32 @@ router.post('/', function (req, res, next) {
   bcrypt.genSalt(saltRounds, function (err, salt) {
     bcrypt.hash(password, salt, function (err, hash) {
       // put hash into db
-      console.log(hash);
-      res.send({success: 'it worked'});
+
+      var con = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'velcro',
+        password : 'velcropass',
+        database : 'Velcro'
+      });
+
+      con.connect();
+
+      con.query('INSERT INTO Users(FirstName, LastName, Email, Password) VALUES (\'' + firstName + '\', \'' + lastName + '\', \'' + email + '\', \'' + hash + '\');', function (error, results, fields) {
+        if (error) {
+          console.log(error);
+          if (error.errno == 1062) {
+            return res.send({'error': 'That email already exists.'});
+          } else {
+            return res.send({'error': error.sqlMessage});
+          }
+        }
+        else {
+          res.send({success: 'it worked'});
+        }
+      });
     })
   });
-  
+
 });
 
 module.exports = router;

@@ -47,6 +47,9 @@ $('#register-button').click(function () {
     url: '/register',
     data: {'firstName':firstName, 'lastName':lastName, 'email':email, 'password':password},
     success: function (data) {
+      if (data.error) {
+        alert(data.error);
+      }
       if (data.success) {
         // window.location.href = '/';
       }

@@ -54,5 +54,5 @@ $('#register-button').click(function () {
         // window.location.href = '/';
       }
     }
-  })
+  });
 });

@@ -21,13 +21,16 @@ router.post('/', function (req, res, next) {
 
   con.connect();
 
-  con.query('SELECT Password FROM Users WHERE Email=\'' + email + '\';', function (error, results, fields) {
+  con.query('SELECT * FROM Users WHERE Email=\'' + email + '\';', function (error, results, fields) {
     if (error) {
       return res.send({'error': error});
     } else {
       var hash = results[0].Password;
       bcrypt.compare(password, hash, function (err, resp) {
         if (resp) {
+          req.session.firstName = results[0].FirstName;
+          req.session.lastName = results[0].LastName;
+          req.session.email = email;
           return res.send({'success' : 'Password Matches!'})
         } else {
           return res.send({'error': 'Incorrect email or password'});

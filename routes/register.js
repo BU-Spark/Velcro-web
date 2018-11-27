@@ -38,6 +38,10 @@ router.post('/', function (req, res, next) {
           }
         }
         else {
+          req.session.firstName = firstName;
+          req.session.lastName = lastName;
+          req.session.email = email;
+
           res.send({success: 'it worked'});
         }
       });

@@ -12,12 +12,25 @@ router.post('/', function (req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
 
-  var con = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'velcro',
-    password : 'velcropass',
-    database : 'Velcro'
-  });
+  if (process.argv[0] && process.argv[1] && process.argv[2]) {
+    var host = process.argv[0];
+    var user = process.argv[1];
+    var password = process.argv[2];
+
+    var con = mysql.createConnection({
+      host     : host,
+      user     : user,
+      password : password,
+      database : 'Velcro'
+    });
+  } else {
+    var con = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'velcro',
+      password : 'velcropass',
+      database : 'Velcro'
+    });
+  }
 
   con.connect();
 

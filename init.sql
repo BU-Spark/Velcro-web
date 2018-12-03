@@ -1,3 +1,7 @@
+CREATE DATABASE Velcro;
+
+use Velcro;
+
 CREATE TABLE Users(
   UserID int UNIQUE NOT NULL AUTO_INCREMENT,
   FirstName VARCHAR(512) NOT NULL,

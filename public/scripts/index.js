@@ -12,3 +12,13 @@ $('#logout-button').click(function () {
     }
   });
 });
+
+$('#prev-button').click(function () {
+  var page = parseInt(window.location.search.split('?')[1].split('=')[1]) - 1;
+  window.location.href = '/?page=' + page;
+});
+
+$('#next-button').click(function () {
+  var page = parseInt(window.location.search.split('?')[1].split('=')[1]) + 1;
+  window.location.href = '/?page=' + page;
+});

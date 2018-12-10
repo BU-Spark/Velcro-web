@@ -25,23 +25,31 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Vendor</th>
+            <th scope="col">Product Name</th>
             <th scope="col">Product Link</th>
             <th scope="col">Image Link</th>
+            <th scope="col">Vendor</th>
+            <th scope="col">Region</th>
         </tr>
         </thead>
         <tbody>
         {{#each data}}
             <tr>
                 <th scope="row">{{@index}}</th>
-                <td>{{this.title}}</td>
-                <td>{{this.vendor}}</td>
-                <td><a href="{{this.productLink}}">{{this.productLink}}</a></td>
-                <td><a href="{{this.imageLink}}">{{this.imageLink}}</a></td>
+                <td>{{this.ProductName}}</td>
+                <td><a href="{{this.ProductPage}}">{{this.ProductPage}}</a></td>
+                <td><a href="{{this.ProductImage}}">{{this.ProductImage}}</a></td>
+                <td>{{this.Vendor}}</td>
+                <td>{{this.Region}}</td>
             </tr>
         {{/each}}
     </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li id="prev-button" class="page-item"><a class="page-link" >Previous</a></li>
+            <li id="next-button" class="page-item"><a class="page-link" >Next</a></li>
+        </ul>
+    </nav>
 </div>
 <script type="text/javascript" src="./scripts/index.js"></script>
 </body>

@@ -12,7 +12,7 @@ $('#login-button').click(function () {
     data : {'email': email, 'password': password},
     success: function (data) {
       if (data.success) {
-        window.location.href = '/';
+        window.location.href = '/?page=1';
       } else if (data.error) {
         alert(data.error);
       } else {

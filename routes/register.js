@@ -19,26 +19,12 @@ router.post('/', function (req, res, next) {
     bcrypt.hash(password, salt, function (err, hash) {
       // put hash into db
 
-      if (process.argv[0] && process.argv[1] && process.argv[2]) {
-        var host = process.argv[0];
-        var user = process.argv[1];
-        var password = process.argv[2];
-
-        var con = mysql.createConnection({
-          host     : host,
-          user     : user,
-          password : password,
-          database : 'Velcro'
-        });
-      } else {
-        var con = mysql.createConnection({
-          host     : 'localhost',
-          user     : 'velcro',
-          password : 'velcropass',
-          database : 'Velcro'
-        });
-      }
-
+      var con = mysql.createConnection({
+        host     : 'us-cdbr-iron-east-01.cleardb.net',
+        user     : 'becae8027b5eb2',
+        password : '3d61718f',
+        database : 'heroku_b8271940e6b02aa'
+      });
 
       con.connect();
 
@@ -57,9 +43,10 @@ router.post('/', function (req, res, next) {
           req.session.email = email;
 
           res.send({success: 'it worked'});
+          con.destroy();
         }
       });
-    })
+    });
   });
 
 });

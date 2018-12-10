@@ -51,7 +51,7 @@ $('#register-button').click(function () {
         alert(data.error);
       }
       if (data.success) {
-        window.location.href = '/';
+        window.location.href = '/?page=1';
       }
     }
   });

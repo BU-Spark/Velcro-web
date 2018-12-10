@@ -12,25 +12,12 @@ router.post('/', function (req, res, next) {
   var email = req.body.email;
   var password = req.body.password;
 
-  if (process.argv[0] && process.argv[1] && process.argv[2]) {
-    var host = process.argv[0];
-    var user = process.argv[1];
-    var password = process.argv[2];
-
-    var con = mysql.createConnection({
-      host     : host,
-      user     : user,
-      password : password,
-      database : 'Velcro'
-    });
-  } else {
-    var con = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'velcro',
-      password : 'velcropass',
-      database : 'Velcro'
-    });
-  }
+  var con = mysql.createConnection({
+    host     : 'us-cdbr-iron-east-01.cleardb.net',
+    user     : 'becae8027b5eb2',
+    password : '3d61718f',
+    database : 'heroku_b8271940e6b02aa'
+  });
 
   con.connect();
 
@@ -44,10 +31,13 @@ router.post('/', function (req, res, next) {
           req.session.firstName = results[0].FirstName;
           req.session.lastName = results[0].LastName;
           req.session.email = email;
-          return res.send({'success' : 'Password Matches!'})
+
+          res.send({'success' : 'Password Matches!'})
         } else {
-          return res.send({'error': 'Incorrect email or password'});
+          con.destroy();
+          res.send({'error': 'Incorrect email or password'});
         }
+        con.destroy();
       });
     }
   });

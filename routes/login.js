@@ -25,6 +25,10 @@ router.post('/', function (req, res, next) {
     if (error) {
       return res.send({'error': error});
     } else {
+      if (results.length == 0) {
+        return res.send({'error': 'Email not found'});
+      }
+
       var hash = results[0].Password;
       bcrypt.compare(password, hash, function (err, resp) {
         if (resp) {
